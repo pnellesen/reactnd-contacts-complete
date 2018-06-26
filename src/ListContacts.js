@@ -46,7 +46,7 @@ class ListContacts extends Component {
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
-          <SubmitButton buttonText={'Add a new contact'} onClick={() => {this.props.changeScreen('create')}} buttonClass={'add-contact'}/>
+          <SubmitButton buttonText={'Add a new contact'} sendTo={'create'} buttonClass={'add-contact'}/>
         </div>
 
         {showingContacts.length !== contacts.length && (

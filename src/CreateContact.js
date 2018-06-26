@@ -7,7 +7,8 @@ class CreateContact extends Component {
         return (
             <div>
             sCreate contact here
-            <p className="showing-contact-details"><SubmitButton buttonText={'Show all contacts'} onClick={() => {this.props.changeScreen('list')}}/></p>
+            <p className="showing-contact-details">
+            <SubmitButton buttonText={'Show all contacts'} sendTo={''}/></p>
             </div>
         )
     }

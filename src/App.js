@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import * as ContactsAPI  from './utils/ContactsAPI';
 import CreateContact from './CreateContact';
 import ListContacts from './ListContacts'
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
-  contacts: [],
-  screen: 'list'
-  }
-  changeScreen = (newScreen) => {
-     console.log("Change screen. newScreen is: " + newScreen);
-      if (this.state.screen !== newScreen) this.setState({screen: newScreen});
+  contacts: []
+
   }
 
  componentDidMount() {
@@ -34,17 +31,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.screen === 'list' && (
-          <ListContacts
-          onDeleteContact={this.removeContact}
-          contacts={this.state.contacts}
-          changeScreen={this.changeScreen}
+          <Route exact path='/' render={() => (
+            <ListContacts
+              onDeleteContact={this.removeContact}
+              contacts={this.state.contacts}
+            />
+          )}/>        
 
-          />
-        )}
-        {this.state.screen === 'create' && (
-          <CreateContact changeScreen={this.changeScreen}/>
-        )}
+          <Route path='/create' component={CreateContact}/>
+
         
       </div>
     )
