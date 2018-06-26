@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
+import SubmitButton from './SubmitButton';
 
 class ListContacts extends Component {
   static propTypes = {
@@ -45,6 +46,7 @@ class ListContacts extends Component {
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
+          <SubmitButton buttonText={'Add a new contact'} onClick={() => {this.props.changeScreen('create')}} buttonClass={'add-contact'}/>
         </div>
 
         {showingContacts.length !== contacts.length && (

@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import * as ContactsAPI  from './utils/ContactsAPI';
+import CreateContact from './CreateContact';
 import ListContacts from './ListContacts'
 
 class App extends Component {
   state = {
-	contacts: []
+  contacts: [],
+  screen: 'list'
   }
-  
+  changeScreen = (newScreen) => {
+     console.log("Change screen. newScreen is: " + newScreen);
+      if (this.state.screen !== newScreen) this.setState({screen: newScreen});
+  }
+
  componentDidMount() {
    ContactsAPI.getAll().then((contacts) => {
  	  console.log("Got contacts:%O", contacts);
@@ -28,10 +34,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ListContacts
+        {this.state.screen === 'list' && (
+          <ListContacts
           onDeleteContact={this.removeContact}
           contacts={this.state.contacts}
-        />
+          changeScreen={this.changeScreen}
+
+          />
+        )}
+        {this.state.screen === 'create' && (
+          <CreateContact changeScreen={this.changeScreen}/>
+        )}
+        
       </div>
     )
   }

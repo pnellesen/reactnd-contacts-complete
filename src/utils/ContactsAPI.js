@@ -1,4 +1,5 @@
-const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://willisen.homelinux.net:3005'
+//const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://willisen.homelinux.net:3005'
+const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://localhost:3005'
 
 let token = localStorage.token
 
